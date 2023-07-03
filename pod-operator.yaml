@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shell-operator
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-modifier
+  namespace: default
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "pods" ]
+    verbs: [ "get", "list", "patch", "update", "watch" ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: shell-operator:pod-modifier
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: shell-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-modifier
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shell-operator
+spec:
+  containers:
+    - name: shell-operator
+      image: public.ecr.aws/arkcase/ready-marker:latest
+      imagePullPolicy: IfNotPresent
+  serviceAccountName: shell-operator
