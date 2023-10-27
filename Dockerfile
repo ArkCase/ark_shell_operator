@@ -1,17 +1,20 @@
 ARG PUBLIC_REGISTRY="public.ecr.aws"
-ARG BASE_REPO="arkcase/nettest"
-ARG BASE_TAG="1.0.6"
 ARG ARCH="amd64"
 ARG OS="linux"
-ARG VER="1.0.0"
-ARG BLD="02"
-ARG SHOP_VER="latest"
-ARG SHOP_SRC="flant/shell-operator"
+ARG VER="1.1.0"
 ARG HOOK_DIR="/hooks"
 
-FROM "${SHOP_SRC}:${SHOP_VER}" as shop
+ARG SHOP_REPO="flant/shell-operator"
+ARG SHOP_VER="latest"
+ARG SHOP_IMG="${SHOP_REPO}:${SHOP_VER}"
 
-FROM "${PUBLIC_REGISTRY}/${BASE_REPO}:${BASE_TAG}"
+ARG BASE_REPO="arkcase/nettest"
+ARG BASE_VER="1.1.0"
+ARG BASE_IMG="${PUBLIC_REGISTRY}/${BASE_REPO}:${BASE_VER}"
+
+FROM "${SHOP_IMG}" as shop
+
+FROM "${BASE_IMG}"
 
 #
 # Basic Parameters
