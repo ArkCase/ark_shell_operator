@@ -1,7 +1,7 @@
 ARG PUBLIC_REGISTRY="public.ecr.aws"
 ARG ARCH="amd64"
 ARG OS="linux"
-ARG VER="1.4.1"
+ARG VER="1.5.0"
 ARG HOOK_DIR="/hooks"
 
 ARG SHOP_REPO="flant/shell-operator"
@@ -9,7 +9,7 @@ ARG SHOP_VER="latest"
 ARG SHOP_IMG="${SHOP_REPO}:v${VER}"
 
 ARG BASE_REPO="arkcase/nettest"
-ARG BASE_VER="1.1.2"
+ARG BASE_VER="1.2.7"
 ARG BASE_IMG="${PUBLIC_REGISTRY}/${BASE_REPO}:${BASE_VER}"
 
 FROM "${SHOP_IMG}" as shop
