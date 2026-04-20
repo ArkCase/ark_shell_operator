@@ -26,7 +26,7 @@ ARG ARCH
 ARG OS
 ARG VER
 ARG AWS_SRC
-ARG UID="0"
+ARG APP_UID="0"
 ARG HOOK_DIR
 
 #
@@ -50,6 +50,6 @@ WORKDIR /
 # Final parameters
 #
 WORKDIR     /
-USER        "${UID}"
+USER        "${APP_UID}"
 ENTRYPOINT  [ "/shell-operator" ]
 CMD         [ "start" ]
