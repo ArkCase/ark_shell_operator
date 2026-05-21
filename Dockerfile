@@ -2,7 +2,7 @@ ARG FIPS=""
 ARG PUBLIC_REGISTRY="public.ecr.aws"
 ARG ARCH="amd64"
 ARG OS="linux"
-ARG VER="1.4.8"
+ARG VER="1.16.7"
 ARG HOOK_DIR="/hooks"
 
 ARG SHOP_REPO="flant/shell-operator"
