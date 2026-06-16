@@ -2,7 +2,7 @@ ARG FIPS=""
 ARG PUBLIC_REGISTRY="public.ecr.aws"
 ARG ARCH="amd64"
 ARG OS="linux"
-ARG VER="1.16.7"
+ARG VER="1.19.5"
 ARG HOOK_DIR="/hooks"
 
 ARG SHOP_REPO="flant/shell-operator"
@@ -36,12 +36,12 @@ LABEL ORG="Armedia LLC"
 LABEL MAINTAINER="Armedia Devops Team <devops@armedia.com>"
 LABEL APP="Pod Ready Marker"
 LABEL VERSION="${VER}"
-LABEL IMAGE_SOURCE="https://github.com/ArkCase/ark_ready_marker"
+LABEL IMAGE_SOURCE="https://github.com/ArkCase/ark_shell_operator"
 
 ENV LOG_TYPE="color"
 ENV SHELL_OPERATOR_HOOKS_DIR="${HOOK_DIR}"
 RUN mkdir -p "${HOOK_DIR}" "/frameworks"
-COPY --from=shop --chown=root:root "/shell-operator" "/shell_lib.sh" "/"
+COPY --from=shop --chown=root:root --chmod=0755 "/shell-operator" "/shell_lib.sh" "/"
 COPY --from=shop --chown=root:root "/frameworks/" "/frameworks/"
 
 WORKDIR /
