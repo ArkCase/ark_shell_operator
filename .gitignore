@@ -1,4 +1,5 @@
-*.sw?
-.sw?
-**/*.sw?
 **/.sw?
+**/.*.sw?
+
+**/compliance*
+**/vulnerabilities*
